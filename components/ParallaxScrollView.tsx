@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactElement } from 'react';
-import { StyleSheet, useColorScheme } from 'react-native';
+import { StyleSheet, useColorScheme, Text } from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -8,6 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/ThemedText'
 
 const HEADER_HEIGHT = 250;
 
@@ -18,8 +19,8 @@ type Props = PropsWithChildren<{
 
 export default function ParallaxScrollView({
   children,
-  headerImage,
-  headerBackgroundColor,
+  // headerImage,
+  // headerBackgroundColor,
 }: Props) {
   const colorScheme = useColorScheme() ?? 'light';
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
@@ -45,13 +46,11 @@ export default function ParallaxScrollView({
   return (
     <ThemedView style={styles.container}>
       <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16}>
-        <Animated.View
-          style={[
-            styles.header,
-            { backgroundColor: headerBackgroundColor[colorScheme] },
-            headerAnimatedStyle,
-          ]}>
-          {headerImage}
+        <Animated.View style={[styles.header]}>
+          <Text style={styles.text}>
+            <ThemedText type='defaultSemiBold' style={styles.bold}>mission</ThemedText>
+            <ThemedText type='defaultSemiBold' style={styles.italic}>House</ThemedText>
+          </Text>
         </Animated.View>
         <ThemedView style={styles.content}>{children}</ThemedView>
       </Animated.ScrollView>
@@ -64,8 +63,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 250,
+    height: 50,
     overflow: 'hidden',
+    backgroundColor: "#000000",
+    textAlign: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   content: {
     flex: 1,
@@ -73,4 +77,15 @@ const styles = StyleSheet.create({
     gap: 16,
     overflow: 'hidden',
   },
+  text: {
+    color: "#FFFFFF"
+  },
+  bold: {
+    fontWeight: '900',
+    color: "#FFFFFF",
+  },
+  italic: {
+    fontStyle: 'italic',
+    color: "#FFFFFF",
+  }
 });
