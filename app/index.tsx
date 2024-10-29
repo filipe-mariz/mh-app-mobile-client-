@@ -1,4 +1,4 @@
-import { Image, TextInput, View, StyleSheet } from 'react-native';
+import { Image, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Link } from 'expo-router'
@@ -26,8 +26,11 @@ export default function HomeScreen() {
 					</ThemedText>
 					<TextInput style={styles.input} />
 				</ThemedView>
+				<TouchableOpacity style={styles.login}>
+					<ThemedText type={"defaultSemiBold"} style={styles.textButton}>Login</ThemedText>
+				</TouchableOpacity>
+				<Link href={'/user'} style={styles.link}>Criar uma conta</Link>
 			</View>
-			<Link href={'/user'}>Vamos pro user</Link>
 		</>
 	);
 }
@@ -45,8 +48,8 @@ const styles = StyleSheet.create({
 	},
 	form: {
 		width: "85%",
-		height: "30%",
-		marginTop: 150,
+		height: "25%",
+		marginTop: 100,
 		backgroundColor: "none",
 
 	},
@@ -75,6 +78,19 @@ const styles = StyleSheet.create({
 	},
 	titleText: {
 		fontWeight: '900',
+	},
+	login: {
+		backgroundColor: "#6A94A1",
+		width: 100,
+		alignItems: 'center',
+		borderRadius: 8
+	},
+	textButton: {
+		color: "#FFFFFF",
+	},
+	link: {
+		color: '#6A94A1',
+		marginTop: 10
 	}
 });
 
