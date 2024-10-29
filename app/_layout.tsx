@@ -27,8 +27,9 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="index" options={{ headerShown }} />
+        <Stack.Screen name="user-confirmation/index" options={{ title: 'Voltar ', headerShown }} />
         <Stack.Screen name="user/index" options={{ title: 'Voltar ', headerShown }} />
+        <Stack.Screen name="index" options={{ headerShown }} />
       </Stack>
     </ThemeProvider>
   );

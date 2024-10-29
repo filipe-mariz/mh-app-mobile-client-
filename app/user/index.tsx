@@ -1,10 +1,17 @@
-import { Image, StyleSheet, Text, TextInput } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { styles } from './styles'
+import { styles } from './styles';
+import { router } from 'expo-router'
+
 
 export default function LoginScreen() {
+  const CreateUser = () => {
+    console.log('teste');
+    router.push('/user-confirmation')
+  }
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#1D3D47', dark: '#1D3D47' }}
@@ -54,6 +61,9 @@ export default function LoginScreen() {
         </ThemedText>
         <TextInput style={styles.input} placeholder='*****************' />
       </ThemedView>
+      <TouchableOpacity style={styles.login} onPress={CreateUser}>
+        <ThemedText type={"defaultSemiBold"} style={styles.textButton}>Criar conta</ThemedText>
+      </TouchableOpacity>
     </ParallaxScrollView>
   );
 }

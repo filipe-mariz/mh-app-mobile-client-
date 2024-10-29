@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
 	mt_20: {
 		marginTop: 20,
 	},
+	mt_150: {
+		marginTop: 150,
+	},
 	header: {
 		backgroundColor: "#000000",
 		color: "#FFFFFF",
